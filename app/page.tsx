@@ -1,40 +1,48 @@
 import { Hero } from "@/components/home/hero";
 import { Section } from "@/components/ui/section";
-import { ButtonLink } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
 
 export default function Home() {
   return (
     <>
       <Hero />
       <Section className="bg-[var(--color-bg-soft)]">
-        <div className="grid gap-6 rounded-2xl border border-[var(--color-border)] bg-white p-8 sm:grid-cols-3">
-          <div>
-            <h3 className="text-3xl font-bold">50+</h3>
-            <p className="mt-1 text-zinc-600">Student builders and researchers</p>
+        <Container>
+          <div className="max-w-3xl">
+            <h2 className="text-3xl font-extrabold tracking-tight text-black sm:text-4xl">
+              The Mission
+            </h2>
+            <p className="mt-4 text-zinc-600">
+              We build the ML Research Club around three pillars: Applied Research, Building,
+              and Community.
+            </p>
           </div>
-          <div>
-            <h3 className="text-3xl font-bold">Workshops</h3>
-            <p className="mt-1 text-zinc-600">Hands-on sessions on core ML fundamentals</p>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            <div className="rounded-2xl border border-[var(--color-border)] bg-white p-6">
+              <h3 className="text-lg font-bold text-black">Applied Research</h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-600">
+                Study the fundamentals, then translate insights into practical experiments and
+                shareable knowledge.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-[var(--color-border)] bg-white p-6">
+              <h3 className="text-lg font-bold text-black">Building</h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-600">
+                Turn ideas into working prototypes: models, optimizations, and real-world
+                project delivery.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-[var(--color-border)] bg-white p-6">
+              <h3 className="text-lg font-bold text-black">Community</h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-600">
+                Collaborate openly through workshops, mentorship, and team-based execution.
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-3xl font-bold">Open Source</h3>
-            <p className="mt-1 text-zinc-600">Projects with practical community impact</p>
-          </div>
-        </div>
-      </Section>
-      <Section>
-        <div className="soft-shadow rounded-2xl border border-[var(--color-border)] bg-white p-8 sm:p-10">
-          <h2 className="text-3xl font-bold tracking-tight">Build with us this semester</h2>
-          <p className="mt-3 max-w-2xl text-zinc-600">
-            From foundational math to production-ready ML systems, the club helps students
-            move from curiosity to confidence.
-          </p>
-          <div className="mt-6">
-            <ButtonLink href="/join" variant="accent">
-              Explore Recruitment Details
-            </ButtonLink>
-          </div>
-        </div>
+        </Container>
       </Section>
     </>
   );
