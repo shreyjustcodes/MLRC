@@ -12,9 +12,11 @@ type ButtonLinkProps = {
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: "bg-black text-white hover:bg-zinc-800",
-  outline: "border border-[var(--color-border)] bg-white text-[var(--color-text)] hover:bg-zinc-50",
-  accent: "bg-[var(--color-blue)] text-white hover:bg-[#356fd1]",
+  // Force text color for reliability (no dark-mode assumptions).
+  primary: "bg-black !text-white text-zinc-50 hover:bg-zinc-800",
+  outline:
+    "border border-[var(--color-border)] bg-white text-[var(--color-text)] hover:bg-zinc-50",
+  accent: "bg-[var(--color-blue)] !text-white text-zinc-50 hover:bg-[#356fd1]",
 };
 
 export function ButtonLink({

@@ -2,6 +2,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
 import { getEvents } from "@/lib/cms";
 import { fallbackEvents } from "@/lib/fallback-content";
+import { GlowCard } from "@/components/ui/spotlight-card";
 
 export const metadata = {
   title: "Events",
@@ -20,9 +21,14 @@ export default async function EventsPage() {
 
       <div className="mt-10 space-y-6">
         {data.map((event) => (
-          <article key={event._id} className="soft-shadow rounded-xl border border-[var(--color-border)] bg-white p-6">
+          <GlowCard
+            key={event._id}
+            size="md"
+            glowColor={event.highlight ? "purple" : event.status === "upcoming" ? "blue" : "green"}
+            className="bg-white border-[var(--color-border)]"
+          >
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <h2 className="text-2xl font-bold">{event.title}</h2>
+              <h2 className="text-2xl font-bold text-black">{event.title}</h2>
               <span className="rounded-full bg-[var(--color-bg-soft)] px-3 py-1 text-xs font-semibold uppercase tracking-wide text-zinc-600">
                 {event.status}
               </span>
@@ -40,7 +46,7 @@ export default async function EventsPage() {
                 </ButtonLink>
               </div>
             ) : null}
-          </article>
+          </GlowCard>
         ))}
       </div>
     </Section>
