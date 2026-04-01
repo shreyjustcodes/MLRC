@@ -42,6 +42,10 @@ export function GlowCard({
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const prefersHover = window.matchMedia("(hover: hover)").matches;
+
+    if (!prefersHover) return;
+
     const syncPointer = (e: PointerEvent) => {
       const el = cardRef.current;
       if (!el) return;
@@ -96,7 +100,7 @@ export function GlowCard({
       backgroundPosition: "50% 50%",
       border: "var(--border-size) solid var(--backup-border)",
       position: "relative" as const,
-      touchAction: "none" as const,
+      touchAction: "pan-y" as const,
     };
 
     if (width !== undefined) {
