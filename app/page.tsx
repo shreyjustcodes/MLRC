@@ -1,11 +1,27 @@
 import { Hero } from "@/components/home/hero";
 import { Section } from "@/components/ui/section";
 import { Container } from "@/components/ui/container";
+import Particles from "@/components/ui/particles";
 
 export default function Home() {
   return (
     <>
-      <Hero />
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <Particles
+            particleColors={["#cbd5e1", "#f1f5f9", "#94a3b8"]}
+            particleCount={150}
+            particleSpread={10}
+            speed={0.05}
+            particleBaseSize={100}
+            moveParticlesOnHover
+            alphaParticles={false}
+            disableRotation={false}
+            pixelRatio={1}
+          />
+        </div>
+        <Hero />
+      </div>
       <Section className="bg-[var(--color-bg-soft)]">
         <Container>
           <div className="max-w-3xl">
