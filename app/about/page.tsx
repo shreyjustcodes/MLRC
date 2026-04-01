@@ -5,6 +5,16 @@ import { getTeamMembers } from "@/lib/cms";
 import { fallbackTeam } from "@/lib/fallback-content";
 import { GlowCard } from "@/components/ui/spotlight-card";
 
+/** Local headshots in /public — keyed by display name from CMS or fallback. */
+const TEAM_PHOTOS: Record<string, string> = {
+  "Shreyansh Thapak": "/shreyansh.jpg",
+  "Anuj Yadav": "/anuj.jpg",
+  "Siddarth Sharma": "/siddarth.jpg",
+  "Prince Sanodiya": "/prince.jpg",
+  "Manya Verma": "/manya.jpg",
+  "Mayank Gupta": "/mayank.jpg",
+};
+
 export const metadata = {
   title: "About the Team",
 };
@@ -42,6 +52,8 @@ export default async function AboutPage() {
                       ? "red"
                       : "blue";
 
+            const photoSrc = TEAM_PHOTOS[member.name] ?? member.imageUrl;
+
             return (
               <GlowCard
                 key={member._id}
@@ -49,26 +61,23 @@ export default async function AboutPage() {
                 size="md"
                 className="group bg-white border-[var(--color-border)] p-0"
               >
-                <div className="flex h-full flex-col">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[var(--color-border)] bg-zinc-50">
-                    {member.imageUrl ? (
-                      <Image
-                        src={member.imageUrl}
-                        alt={member.name}
-                        fill
-                        className="object-cover grayscale transition duration-300 group-hover:grayscale-0"
-                      />
-                    ) : (
-                      <div className="flex h-full items-center justify-center bg-zinc-100 text-xs font-semibold uppercase tracking-widest text-zinc-500">
-                        Photo
-                      </div>
-                    )}
-                  </div>
+                <div className="flex h-full flex-col items-center px-6 pb-6 pt-6 text-center">
+                  {photoSrc ? (
+                    <Image
+                      src={photoSrc}
+                      alt={member.name}
+                      width={96}
+                      height={96}
+                      className="mx-auto mb-4 h-24 w-24 rounded-full border-2 border-slate-100 object-cover shadow-sm"
+                    />
+                  ) : (
+                    <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full border-2 border-slate-100 bg-zinc-100 text-[10px] font-semibold uppercase tracking-widest text-zinc-500 shadow-sm">
+                      Photo
+                    </div>
+                  )}
 
-                  <div className="mt-5 px-6 pb-6">
-                    <h2 className="text-lg font-bold text-black">{member.name}</h2>
-                    <p className="mt-1 text-sm text-zinc-600">{member.role}</p>
-                  </div>
+                  <h2 className="text-lg font-bold text-black">{member.name}</h2>
+                  <p className="mt-1 text-sm text-zinc-600">{member.role}</p>
                 </div>
               </GlowCard>
             );
