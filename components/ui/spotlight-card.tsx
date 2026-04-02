@@ -106,7 +106,7 @@ export function GlowCard({
         className="pointer-events-none absolute -inset-px transition-opacity duration-300"
         style={{
           opacity,
-          background: \`radial-gradient(600px circle at \${position.x}px \${position.y}px, \${baseColor}, transparent 40%)\`,
+          background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${baseColor}, transparent 40%)`,
         }}
       />
       <div className="relative z-10 flex flex-col h-full w-full">{children}</div>
