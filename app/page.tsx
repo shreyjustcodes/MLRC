@@ -9,11 +9,11 @@ export default function Home() {
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <Particles
-            particleColors={["#cbd5e1", "#f1f5f9", "#94a3b8"]}
-            particleCount={150}
+            particleColors={["#000000", "#1a1a1a", "#333333", "#4d4d4d", "#666666"]}
+            particleCount={400}
             particleSpread={10}
-            speed={0.05}
-            particleBaseSize={100}
+            speed={0.06}
+            particleBaseSize={120}
             moveParticlesOnHover
             alphaParticles={false}
             disableRotation={false}
